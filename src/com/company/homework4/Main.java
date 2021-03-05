@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static char[][] map;
-    public static final int SIZE = 3;
+    public static final int SIZE = 5;
     public static final int DOTS_TO_WIN = 3;
 
     public static final char DOT_EMPTY = '*';
@@ -17,6 +17,10 @@ public class Main {
     public static Random rand = new Random();
 
     public static void main(String[] args) {
+        ticTacToeGame();
+    }
+
+    private static void ticTacToeGame() {
         initMap();
         printMap();
         while (true) {
@@ -155,11 +159,11 @@ public class Main {
 
                 if (j+i < SIZE && SIZE - j >= DOTS_TO_WIN) {
                     mainDiagDown = (map[j+i][i] == symb) ? ++mainDiagDown : 0;
-                    revDiagDown = (map[j+i][SIZE-1-j-i] == symb) ? ++revDiagDown : 0;
+                    revDiagDown = (map[i][SIZE-1-i-j] == symb) ? ++revDiagDown : 0;
 
-                    if (j != 0) { //Исключаем дублирование расчета главной диагонали
+                    if (j != 0) { //Исключаем дублирование расчета главной и обратной диагоналей
                         mainDiagUp = (map[i][j+i] == symb) ? ++mainDiagUp : 0;
-                        revDiagUp = (map[SIZE-1-j-i][j+i] == symb) ? ++revDiagUp : 0;
+                        revDiagUp = (map[SIZE-1-i][i+j] == symb) ? ++revDiagUp : 0;
                     }
                 }
 
@@ -168,6 +172,7 @@ public class Main {
                 }
             }
         }
+        System.out.println();
 
         return false;
     }
