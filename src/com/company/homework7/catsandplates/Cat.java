@@ -13,6 +13,11 @@ public class Cat implements Eatable{
     }
 
     @Override
+    public int getAppetite() {
+        return appetite;
+    }
+
+    @Override
     public boolean isHungry() {
         return !satiety;
     }

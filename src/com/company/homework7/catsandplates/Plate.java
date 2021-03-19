@@ -26,7 +26,12 @@ public class Plate implements FoodContainable {
 
     @Override
     public boolean isFoodEnough(int neededFood) {
-        return this.food <= neededFood;
+        return this.food >= neededFood;
+    }
+
+    @Override
+    public boolean isNotFoodEnough(int neededFood) {
+        return this.food < neededFood;
     }
 
     @Override
