@@ -16,8 +16,47 @@ package com.company.homework7;
 //6. Добавить в тарелку метод, с помощью которого можно было бы добавлять
 // еду в тарелку.
 
+import com.company.homework7.catsandplates.Cat;
+import com.company.homework7.catsandplates.Eatable;
+import com.company.homework7.catsandplates.FoodContainable;
+import com.company.homework7.catsandplates.Plate;
+
+import java.util.Random;
+
 public class HomeWork7 {
+    private static int CATS_COUNT = 30;
+    private static int PLATE_VOLUME = 50;
+    private static Cat[] cats = new Cat[CATS_COUNT];
+    private static final Random RND = new Random();
+    private static Plate plate = new Plate(PLATE_VOLUME);
+
     public static void demonstrate() {
+        initCats();
+        feedEaters(cats, plate);
+        printHowDidCatsFeed();
+    }
+
+    private static void initCats() {
+        for (int i = 0; i < CATS_COUNT; i++) {
+            String name = "Cat" + i;
+            int appetite = RND.nextInt(Cat.MAX_APPETITE - Cat.MIN_APPETITE) + Cat.MIN_APPETITE;
+            cats[i] = new Cat(name, appetite);
+        }
+    }
+
+    private static void feedEaters(Eatable[] eaters, FoodContainable foodContainer) {
+        for (Eatable eater : eaters) {
+            if (eater.isHungry()) {
+                eater.eat(foodContainer);
+            }
+        }
+    }
+
+    private static void printHowDidCatsFeed() {
+        for (Cat cat : cats) {
+            System.out.println(cat);
+        }
         System.out.println();
+        System.out.println(plate);
     }
 }

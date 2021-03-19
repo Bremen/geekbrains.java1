@@ -1,6 +1,7 @@
 package com.company.homework7.catsandplates;
 
-public class Plate implements FoodContainable{
+public class Plate implements FoodContainable {
+    private int refillCount = 0;
     private final int VOLUME;
     private int food;
 
@@ -12,10 +13,6 @@ public class Plate implements FoodContainable{
     public Plate(int volume) {
         VOLUME = volume;
         this.food = volume;
-    }
-
-    public void info() {
-        System.out.println("plate: " + food);
     }
 
     @Override
@@ -35,5 +32,11 @@ public class Plate implements FoodContainable{
     @Override
     public void refill() {
         food = VOLUME;
+        refillCount++;
+    }
+
+    @Override
+    public String toString() {
+        return "plate: food - " + food + ", volume - " + VOLUME + ", refilledCount = " + refillCount;
     }
 }
