@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static char[][] map;
-    public static final int SIZE = 4;
+    public static final int SIZE = 5;
     public static final int DOTS_TO_WIN = 3;
 
     public static final char DOT_EMPTY = '*';
@@ -14,9 +14,13 @@ public class Main {
 
     public static Scanner sc = new Scanner(System.in);
 
-    public static Random rand = new Random();
+    public static final Random RAND = new Random();
 
     public static void main(String[] args) {
+        playTicTacToeGame();
+    }
+
+    private static void playTicTacToeGame() {
         initMap();
         printMap();
         while (true) {
@@ -117,8 +121,8 @@ public class Main {
         int x;
         int y;
         do {
-            x = rand.nextInt(SIZE);
-            y = rand.nextInt(SIZE);
+            x = RAND.nextInt(SIZE);
+            y = RAND.nextInt(SIZE);
         } while (!isCellValid(x, y));
         makeAiTurn(x, y);
     }
@@ -153,13 +157,13 @@ public class Main {
                 horCount = (map[j][i] == symb) ? ++horCount : 0;
                 verCount = (map[i][j] == symb) ? ++verCount : 0;
 
-                if (j+i < SIZE && SIZE - j >= DOTS_TO_WIN) {
-                    mainDiagDown = (map[j+i][i] == symb) ? ++mainDiagDown : 0;
-                    revDiagDown = (map[j+i][SIZE-1-j-i] == symb) ? ++revDiagDown : 0;
+                if (j + i < SIZE && SIZE - j >= DOTS_TO_WIN) {
+                    mainDiagDown = (map[j + i][i] == symb) ? ++mainDiagDown : 0;
+                    revDiagDown = (map[i][SIZE - 1 - i - j] == symb) ? ++revDiagDown : 0;
 
-                    if (j != 0) { //Исключаем дублирование расчета главной диагонали
-                        mainDiagUp = (map[i][j+i] == symb) ? ++mainDiagUp : 0;
-                        revDiagUp = (map[SIZE-1-j-i][j+i] == symb) ? ++revDiagUp : 0;
+                    if (j != 0) { //Исключаем дублирование расчета главной и обратной диагоналей
+                        mainDiagUp = (map[i][j + i] == symb) ? ++mainDiagUp : 0;
+                        revDiagUp = (map[SIZE - 1 - i][i + j] == symb) ? ++revDiagUp : 0;
                     }
                 }
 
