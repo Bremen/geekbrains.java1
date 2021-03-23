@@ -8,11 +8,11 @@ public class Lesson3 {
     private static Random rand = new Random();
 
     public static void main(String[] args) {
+        playGames();
+    }
+
+    private static void playGames() {
         System.out.println("Привет!");
-
-        for (int i = 10; !(0 >= i); i++) {
-
-        }
 
         // Задание 1.
         guessingNumberGame();
@@ -21,9 +21,11 @@ public class Lesson3 {
         guessingWordGame();
 
         System.out.println("Пока!");
+
+        sc.close();
     }
 
-//    1. Написать программу, которая загадывает случайное число от 0 до 9
+    //    1. Написать программу, которая загадывает случайное число от 0 до 9
 //    и пользователю дается 3 попытки угадать это число. При каждой попытке компьютер должен сообщить,
 //    больше ли указанное пользователем число, чем загаданное, или меньше.
 //    После победы или проигрыша выводится запрос – «Повторить игру еще раз? 1 – да / 0 – нет»(1 – повторить, 0 – нет).
