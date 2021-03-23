@@ -1,12 +1,12 @@
 package com.company.homework8.gui;
 
-import com.company.project.train.core.GameService;
-import com.company.project.train.core.domain.MatrixCoordinate;
-import com.company.project.train.core.impl.GameServiceImpl;
-import com.company.project.train.enums.DotType;
-import com.company.project.train.gui.component.StatusBar;
-import com.company.project.train.gui.dialog.Configurable;
-import com.company.project.train.gui.dialog.impl.ConfigurationDialog;
+import com.company.homework8.core.GameService;
+import com.company.homework8.core.domain.MatrixCoordinate;
+import com.company.homework8.core.impl.GameServiceImpl;
+import com.company.homework8.enums.DotType;
+import com.company.homework8.gui.component.StatusBar;
+import com.company.homework8.gui.dialog.Configurable;
+import com.company.homework8.gui.dialog.impl.ConfigurationDialog;
 
 import javax.swing.*;
 import java.awt.*;
